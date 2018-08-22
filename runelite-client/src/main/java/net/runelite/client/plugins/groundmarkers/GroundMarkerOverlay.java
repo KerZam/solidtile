@@ -38,7 +38,7 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
-import net.runelite.client.ui.overlay.OverlayUtil;
+import net.runelite.client.ui.overlay.OverlayUtill;
 
 public class GroundMarkerOverlay extends Overlay
 {
@@ -95,6 +95,6 @@ public class GroundMarkerOverlay extends Overlay
 			return;
 		}
 
-		OverlayUtil.renderPolygon(graphics, poly, config.markerColor());
+		OverlayUtill.renderPolygon(graphics, poly, config.markerColor());
 	}
 }
