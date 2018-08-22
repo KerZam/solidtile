@@ -25,27 +25,19 @@
 package net.runelite.client.ui.overlay;
 
 import com.google.common.base.Strings;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
+import net.runelite.api.*;
+import net.runelite.api.Point;
+import net.runelite.api.coords.LocalPoint;
+
+import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.image.BufferedImage;
-import net.runelite.api.Actor;
-import net.runelite.api.Client;
-import net.runelite.api.Perspective;
-import net.runelite.api.Point;
-import net.runelite.api.TileObject;
-import net.runelite.api.coords.LocalPoint;
 
 
 /**
  * Created by Kyle Fricilone on Jun 09, 2017.
  */
-public class OverlayUtil
+public class OverlayUtill
 {
 	public static void renderPolygon(Graphics2D graphics, Polygon poly, Color color)
 	{
@@ -53,7 +45,7 @@ public class OverlayUtil
 		final Stroke originalStroke = graphics.getStroke();
 		graphics.setStroke(new BasicStroke(2));
 		graphics.drawPolygon(poly);
-		graphics.setColor(new Color(0, 0, 0, 20));
+		graphics.setColor(new Color(0, 255, 0, 255));
 		graphics.fillPolygon(poly);
 		graphics.setStroke(originalStroke);
 	}
@@ -85,7 +77,7 @@ public class OverlayUtil
 
 	public static void renderImageLocation(Client client, Graphics2D graphics, LocalPoint localPoint, BufferedImage image, int zOffset)
 	{
-		net.runelite.api.Point imageLocation = Perspective.getCanvasImageLocation(client, graphics, localPoint, image, zOffset);
+		Point imageLocation = Perspective.getCanvasImageLocation(client, graphics, localPoint, image, zOffset);
 		if (imageLocation != null)
 		{
 			renderImageLocation(graphics, imageLocation, image);
@@ -162,7 +154,7 @@ public class OverlayUtil
 		renderImageLocation(client, graphics, localLocation, image, 0);
 	}
 
-	public static void renderHoverableArea(Graphics2D graphics, Area area, net.runelite.api.Point mousePosition, Color fillColor, Color borderColor, Color borderHoverColor)
+	public static void renderHoverableArea(Graphics2D graphics, Area area, Point mousePosition, Color fillColor, Color borderColor, Color borderHoverColor)
 	{
 		if (area != null)
 		{

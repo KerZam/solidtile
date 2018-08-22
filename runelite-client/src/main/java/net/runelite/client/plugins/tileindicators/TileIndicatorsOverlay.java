@@ -35,7 +35,7 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
-import net.runelite.client.ui.overlay.OverlayUtil;
+import net.runelite.client.ui.overlay.OverlayUtill;
 
 public class TileIndicatorsOverlay extends Overlay
 {
@@ -67,7 +67,7 @@ public class TileIndicatorsOverlay extends Overlay
 			return null;
 		}
 		
-		OverlayUtil.renderPolygon(graphics, poly, config.highlightDestinationColor());
+		OverlayUtill.renderPolygon(graphics, poly, config.highlightDestinationColor());
 
 		return null;
 	}
