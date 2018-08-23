@@ -177,7 +177,7 @@ public class NpcSceneOverlay extends Overlay
 					graphics.setColor(color);
 					graphics.setStroke(new BasicStroke(2));
 					graphics.draw(objectClickbox);
-					graphics.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 20));
+					graphics.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 255));
 					graphics.fill(objectClickbox);
 				}
 				break;
