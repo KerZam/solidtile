@@ -64,6 +64,7 @@ import net.runelite.api.WorldType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.LocalPlayerDeath;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.Widget;
 import static net.runelite.api.widgets.WidgetID.BARROWS_REWARD_GROUP_ID;
@@ -273,12 +274,21 @@ public class ScreenshotPlugin extends Plugin
 		{
 			// "You have completed The Corsair Curse!"
 			String text = client.getWidget(WidgetInfo.QUEST_COMPLETED_NAME_TEXT).getText();
-			fileName = text.substring(19, text.length() - 1);
+			fileName = "Quest(" + text.substring(19, text.length() - 1) + ")";
 		}
 
 		if (fileName != null)
 		{
 			takeScreenshot(fileName);
+		}
+	}
+
+	@Subscribe
+	public void onLocalPlayerDeath(LocalPlayerDeath death)
+	{
+		if (config.screenshotPlayerDeath())
+		{
+			takeScreenshot("Death " + format(new Date()));
 		}
 	}
 
@@ -492,7 +502,7 @@ public class ScreenshotPlugin extends Plugin
 	 *
 	 * @param fileName    Filename to use, without file extension.
 	 */
-	void takeScreenshot(String fileName)
+	private void takeScreenshot(String fileName)
 	{
 		if (client.getGameState() == GameState.LOGIN_SCREEN)
 		{

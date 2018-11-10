@@ -50,14 +50,6 @@ public enum Varbits
 	CHAT_SCROLLBAR_ON_LEFT(6374),
 
 	/**
-	 * Runecraft pouches
-	 */
-	POUCH_SMALL(603),
-	POUCH_MEDIUM(604),
-	POUCH_LARGE(605),
-	POUCH_GIANT(606),
-
-	/**
 	 * Runepouch
 	 */
 	RUNE_POUCH_RUNE1(29),
@@ -212,6 +204,18 @@ public enum Varbits
 	IN_GAME_BA(3923),
 
 	/**
+	 * 0 = Outside wilderness
+	 * 1 = In wilderness
+	 */
+	IN_WILDERNESS(5963),
+
+	/**
+	 * Fishing Trawler
+	 * FISHING_TRAWLER_ACTIVITY Expected values: 0-255
+	 */
+	FISHING_TRAWLER_ACTIVITY(3377),
+
+	/**
 	 * Blast Furnace Bar Dispenser
 	 *
 	 * These are the expected values:
@@ -338,14 +342,20 @@ public enum Varbits
 	 */
 	KINGDOM_FAVOR(72),
 	KINGDOM_COFFER(74),
-	THRONE_OF_MISCELLANIA_QUEST(359),
+
+	/**
+	 * The Hand in the Sand quest status
+	 */
+	QUEST_THE_HAND_IN_THE_SAND(1527),
 
 	/**
 	 * Daily Tasks (Collection availability)
 	 */
-	DAILY_HERB_BOX(3961),
-	DAILY_STAVES(4539),
-	DAILY_ESSENCE(4547),
+	DAILY_HERB_BOXES_COLLECTED(3961),
+	DAILY_STAVES_COLLECTED(4539),
+	DAILY_ESSENCE_COLLECTED(4547),
+	DAILY_RUNES_COLLECTED(4540),
+	DAILY_SAND_COLLECTED(4549),
 
 	/**
 	 * Fairy Ring
@@ -390,9 +400,22 @@ public enum Varbits
 	ACCOUNT_TYPE(1777),
 
 	/**
+	 * The varbit that stores the oxygen percentage for player
+	 */
+	OXYGEN_LEVEL(5811),
+	
+	/**
 	 * Corp beast damage
 	 */
 	CORP_DAMAGE(999),
+
+	/**
+	 * Toggleable slayer unlocks
+	 */
+	SUPERIOR_ENABLED(5362),
+	FOSSIL_ISLAND_WYVERN_DISABLE(6251),
+
+	CURRENT_BANK_TAB(4150),
 
 	WORLDHOPPER_FAVROITE_1(4597),
 	WORLDHOPPER_FAVROITE_2(4598);

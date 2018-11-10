@@ -68,7 +68,7 @@ enum TeleportLocationData
 	HARMONY_ISLAND(TeleportType.ARCEUUS_MAGIC, "Harmony Island", 65, new WorldPoint(3797, 2866, 0), "harmony_island_teleport_icon.png"),
 	CEMETERY(TeleportType.ARCEUUS_MAGIC, "Cemetery", 71, new WorldPoint(2978, 3763, 0), "cemetery_teleport_icon.png"),
 	BARROWS(TeleportType.ARCEUUS_MAGIC, "Barrows", 83, new WorldPoint(3565, 3315, 0), "barrows_teleport_icon.png"),
-	APE_ATOLL_ARCEUUS(TeleportType.ARCEUUS_MAGIC, "Ape Atoll", 90, new WorldPoint(2771, 9102, 0), "ape_atoll_teleport_icon_arceuus.png"),
+	APE_ATOLL_ARCEUUS(TeleportType.ARCEUUS_MAGIC, "Ape Atoll", 90, new WorldPoint(2770, 2703, 0), "ape_atoll_teleport_icon_arceuus.png"),
 
 	// Jewellery
 	BARBARIAN_ASSAULT(TeleportType.JEWELLERY, "Games Necklace" , "Barbarian Assault", new WorldPoint(2520, 3571, 0), "games_necklace_teleport_icon.png"),
@@ -120,12 +120,17 @@ enum TeleportLocationData
 	STRONGHOLD_OF_SECURITY(TeleportType.OTHER, "Skull Sceptre", "Stronghold of Security", new WorldPoint(3081, 3421, 0), "skull_sceptre_teleport_icon.png"),
 	MYTHS_GUILD(TeleportType.OTHER, "Mythical Cape", "Myth's Guild", new WorldPoint(2458, 2851, 0), "mythical_cape_teleport_icon.png"),
 	ECTOFUNTUS(TeleportType.OTHER, "Ectophial", "Ectofuntus", new WorldPoint(3660, 3522, 0), "ectophial_teleport_icon.png"),
-	CHAMPIONS_GUILD_CHRONICLE(TeleportType.OTHER, "Chronicle", "Champion's Guild", new WorldPoint(3202, 3357, 0), "chronicle_teleport_icon.png"),
+	CHAMPIONS_GUILD_CHRONICLE(TeleportType.OTHER, "Chronicle", "Champions' Guild", new WorldPoint(3202, 3357, 0), "chronicle_teleport_icon.png"),
 	GRAND_TREE(TeleportType.OTHER, "Royal Seed Pod", "Grand Tree", new WorldPoint(2465, 3495, 0), "royal_seed_pod_teleport_icon.png"),
 	RELLEKKKA_LYRE(TeleportType.OTHER, "Enchanted Lyre", "Rellekka", new WorldPoint(2664, 3643, 0), "enchanted_lyre_teleport_icon.png"),
 	WATERBIRTH_ISLAND_LYRE(TeleportType.OTHER, "Enchanted Lyre", "Waterbirth Island", new WorldPoint(2550, 3756, 0), "enchanted_lyre_teleport_icon.png"),
 	NEITIZNOT_LYRE(TeleportType.OTHER, "Enchanted Lyre", "Neitiznot", new WorldPoint(2336, 3801, 0), "enchanted_lyre_teleport_icon.png"),
-	JATIZSO_LYRE(TeleportType.OTHER, "Enchanted Lyre", "Jatizso", new WorldPoint(2409, 3809, 0), "enchanted_lyre_teleport_icon.png"),
+	JATIZSO_LYRE(TeleportType.OTHER, "Enchanted Lyre", "Jatizso", new WorldPoint(2409,  3809, 0), "enchanted_lyre_teleport_icon.png"),
+	WEISS_ICY_BASALT(TeleportType.OTHER, "Icy Basalt", "Weiss", new WorldPoint(2846, 3940, 0), "icy_basalt_teleport_icon.png"),
+	TROLL_STRONGHOLD_STONY_BASALT(TeleportType.OTHER, "Stony Basalt", "Troll Stronghold", new WorldPoint(2838, 3693, 0), "stony_basalt_teleport_icon.png"),
+	KHAREDSTS_MEMOIRS_HOSIDIUS(TeleportType.OTHER, "Kharedst's Memoirs", "Lunch by the Lancalliums (Hosidius)", new WorldPoint(1713, 3612, 0), "kharedsts_memoirs_teleport_icon.png"),
+	KHAREDSTS_MEMOIRS_PISCARILIUS(TeleportType.OTHER, "Kharedst's Memoirs", "The Fisher's Flute (Piscarilius)", new WorldPoint(1802, 3748, 0), "kharedsts_memoirs_teleport_icon.png"),
+	KHAREDSTS_MEMOIRS_SHAYZIEN(TeleportType.OTHER, "Kharedst's Memoirs", "Hearsay and History (Shayzien)", new WorldPoint(1476, 3580, 0), "kharedsts_memoirs_teleport_icon.png"),
 
 	// Wilderness
 	OBELISK_13(TeleportType.OTHER, "Obelisk", "13", new WorldPoint(3156, 3620, 0), "obelisk_icon.png"),
@@ -155,7 +160,7 @@ enum TeleportLocationData
 	ELF_CAMP_SCROLL(TeleportType.SCROLL, "Elf Camp Teleport", new WorldPoint(2193, 3257, 0), "scroll_teleport_icon.png"),
 	FELDIP_HILLS_SCROLL(TeleportType.SCROLL, "Feldip Hills Teleport", new WorldPoint(2542, 2925, 0), "scroll_teleport_icon.png"),
 	LUMBERYARD_SCROLL(TeleportType.SCROLL, "Lumberyard Teleport", new WorldPoint(3303, 3487, 0), "scroll_teleport_icon.png"),
-	LUNAR_ISLE_SCROLL(TeleportType.SCROLL, "Lunar Aisle Teleport", new WorldPoint(2093, 3912, 0), "scroll_teleport_icon.png"),
+	LUNAR_ISLE_SCROLL(TeleportType.SCROLL, "Lunar Isle Teleport", new WorldPoint(2093, 3912, 0), "scroll_teleport_icon.png"),
 	MORTTON_SCROLL(TeleportType.SCROLL, "Mort'ton", new WorldPoint(3489, 3288, 0), "scroll_teleport_icon.png"),
 	MOS_LEHARMLESS_SCROLL(TeleportType.SCROLL, "Mos Le'Harmless Teleport", new WorldPoint(3701, 2996, 0), "scroll_teleport_icon.png"),
 	NARDAH_SCROLL(TeleportType.SCROLL, "Nardah Teleport", new WorldPoint(3421, 2917, 0), "scroll_teleport_icon.png"),

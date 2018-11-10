@@ -369,6 +369,23 @@ public interface Client extends GameEngine
 	int getMouseCurrentButton();
 
 	/**
+	 * Schedules checking of current region tile for next frame, so ${@link Client#getSelectedSceneTile()} ()} will
+	 * return actual value.
+	 *
+	 * @param checkClick when true next frame selected region tile will be updated
+	 */
+	void setCheckClick(boolean checkClick);
+
+	/**
+	 * Sets current mouse hover position. This value is automatically updated only when right-clicking in game.
+	 * Setting this value together with ${@link Client#setCheckClick(boolean)} will update ${@link Client#getSelectedSceneTile()} ()}
+	 * for next frame.
+	 *
+	 * @param position current mouse hover position
+	 */
+	void setMouseCanvasHoverPosition(Point position);
+
+	/**
 	 * Gets the currently selected tile (ie. last right clicked tile).
 	 *
 	 * @return the selected tile
@@ -648,12 +665,14 @@ public interface Client extends GameEngine
 	String getVar(VarClientStr varClientStr);
 
 	/**
-	 * Sets the given variable
-	 *
-	 * @param varClientStr
-	 * @param value
+	 * Sets a VarClientString to the passed value
 	 */
 	void setVar(VarClientStr varClientStr, String value);
+
+	/**
+	 * Sets a VarClientInt to the passed value
+	 */
+	void setVar(VarClientInt varClientStr, int value);
 
 	/**
 	 * Sets the value of a given variable.
@@ -928,6 +947,11 @@ public interface Client extends GameEngine
 	int getMouseIdleTicks();
 
 	/**
+	 * Gets the number of milliseconds since the last mouse press occurred.
+	 */
+	long getMouseLastPressedMillis();
+
+	/**
 	 * Gets the amount of ticks since the last keyboard press occurred.
 	 *
 	 * @return amount of idle keyboard ticks
@@ -1079,9 +1103,9 @@ public interface Client extends GameEngine
 	RenderOverview getRenderOverview();
 
 	/**
-	 * Checked whether the client is in stretched mode.
+	 * Checks whether the client is in stretched mode.
 	 *
-	 * @return true if the client is in stretched, false otherwise
+	 * @return true if the client is in stretched mode, false otherwise
 	 */
 	boolean isStretchedEnabled();
 
@@ -1093,16 +1117,16 @@ public interface Client extends GameEngine
 	void setStretchedEnabled(boolean state);
 
 	/**
-	 * Checks whether the client is using fast rendering techniques when
-	 * stretching the client in fixed mode.
+	 * Checks whether the client is using fast
+	 * rendering techniques when stretching the canvas.
 	 *
-	 * @return true if client is fast rendering, false otherwise
+	 * @return true if stretching is fast rendering, false otherwise
 	 */
 	boolean isStretchedFast();
 
 	/**
-	 * Sets whether to use fast rendering techniques when in stretch
-	 * fixed mode.
+	 * Sets whether to use fast rendering techniques
+	 * when stretching the canvas.
 	 *
 	 * @param state new fast rendering state
 	 */
@@ -1110,18 +1134,35 @@ public interface Client extends GameEngine
 
 	/**
 	 * Sets whether to force integer scale factor by rounding scale
-	 * factors towards {@code zero} when stretching fixed mode.
+	 * factors towards {@code zero} when stretching.
 	 *
 	 * @param state new integer scaling state
 	*/
 	void setStretchedIntegerScaling(boolean state);
 
 	/**
-	 * Sets whether to keep aspect ratio when stretching fixed mode.
+	 * Sets whether to keep aspect ratio when stretching.
 	 *
 	 * @param state new keep aspect ratio state
 	 */
 	void setStretchedKeepAspectRatio(boolean state);
+
+	/**
+	 * Sets the scaling factor when scaling resizable mode.
+	 *
+	 * @param factor new scaling factor
+	 */
+	void setScalingFactor(int factor);
+
+	/**
+	 * Invalidates cached dimensions that are
+	 * used for stretching and scaling.
+	 *
+	 * @param resize true to tell the game to
+	 *               resize the canvas on the next frame,
+	 *               false otherwise.
+	 */
+	void invalidateStretching(boolean resize);
 
 	/**
 	 * Gets the current stretched dimensions of the client.
@@ -1384,34 +1425,23 @@ public interface Client extends GameEngine
 	@VisibleForDevtools
 	int[] getSkillExperiences();
 
-	@VisibleForDevtools
-	int[] getChangedSkills();
-
-	@VisibleForDevtools
-	int getChangedSkillsCount();
-
-	@VisibleForDevtools
-	void setChangedSkillsCount(int i);
+	void queueChangedSkill(Skill skill);
 
 	/**
-	 * Sets a mapping of sprites to override.
+	 * Gets a mapping of sprites to override.
 	 * <p>
 	 * The key value in the map corresponds to the ID of the sprite,
 	 * and the value the sprite to replace it with.
-	 *
-	 * @param overrides the sprites to override
 	 */
-	void setSpriteOverrides(Map<Integer, SpritePixels> overrides);
+	Map<Integer, SpritePixels> getSpriteOverrides();
 
 	/**
-	 * Sets a mapping of widget sprites to override.
+	 * Gets a mapping of widget sprites to override.
 	 * <p>
 	 * The key value in the map corresponds to the packed widget ID,
 	 * and the value the sprite to replace the widgets sprite with.
-	 *
-	 * @param overrides the sprites to override
 	 */
-	void setWidgetSpriteOverrides(Map<Integer, SpritePixels> overrides);
+	Map<Integer, SpritePixels> getWidgetSpriteOverrides();
 
 	/**
 	 * Sets the compass sprite.
@@ -1419,6 +1449,13 @@ public interface Client extends GameEngine
 	 * @param spritePixels the new sprite
 	 */
 	void setCompass(SpritePixels spritePixels);
+
+	/**
+	 * Returns widget sprite cache, to be used with {@link Client#getSpriteOverrides()}
+	 *
+	 * @return the cache
+	 */
+	NodeCache getWidgetSpriteCache();
 
 	/**
 	 * Gets the current server tick count.
@@ -1472,39 +1509,4 @@ public interface Client extends GameEngine
 	 * @param world target world to hop to
 	 */
 	void hopToWorld(World world);
-
-	/**
-	 * Sets the x-axis coordinate of the camera.
-	 *
-	 * @param cameraX the new camera x-value.
-	 */
-	void setCameraX(int cameraX);
-
-	/**
-	 * Sets the y-axis coordinate of the camera.
-	 *
-	 * @param cameraY the new camera y-value.
-	 */
-	void setCameraY(int cameraY);
-
-	/**
-	 * Sets the z-axis coordinate of the camera.
-	 *
-	 * @param cameraZ the new camera z-value.
-	 */
-	void setCameraZ(int cameraZ);
-
-	/**
-	 * Sets the pitch of the camera.
-	 *
-	 * @param cameraPitch the new camera pitch.
-	 */
-	void setCameraPitch(int cameraPitch);
-
-	/**
-	 * Sets the yaw of the camera.
-	 *
-	 * @param cameraYaw the new camera yaw.
-	 */
-	void setCameraYaw(int cameraYaw);
 }

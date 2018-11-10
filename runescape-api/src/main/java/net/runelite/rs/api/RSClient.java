@@ -40,25 +40,13 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getCameraX();
 
-	@Import("cameraX")
-	@Override
-	void setCameraX(int cameraX);
-
 	@Import("cameraY")
 	@Override
 	int getCameraY();
 
-	@Import("cameraY")
-	@Override
-	void setCameraY(int cameraY);
-
 	@Import("cameraZ")
 	@Override
 	int getCameraZ();
-
-	@Import("cameraZ")
-	@Override
-	void setCameraZ(int cameraZ);
 
 	@Import("plane")
 	@Override
@@ -69,16 +57,11 @@ public interface RSClient extends RSGameEngine, Client
 	int getCameraPitch();
 
 	@Import("cameraPitch")
-	@Override
 	void setCameraPitch(int cameraPitch);
 
 	@Import("cameraYaw")
 	@Override
 	int getCameraYaw();
-
-	@Import("cameraYaw")
-	@Override
-	void setCameraYaw(int cameraYaw);
 
 	@Import("world")
 	int getWorld();
@@ -135,19 +118,26 @@ public interface RSClient extends RSGameEngine, Client
 	int[] getSkillExperiences();
 
 	@Import("changedSkills")
-	@Override
 	int[] getChangedSkills();
 
 	@Import("changedSkillsCount")
-	@Override
 	int getChangedSkillsCount();
 
 	@Import("changedSkillsCount")
-	@Override
 	void setChangedSkillsCount(int i);
 
 	@Import("gameState")
 	int getRSGameState();
+
+	@Import("checkClick")
+	@Override
+	void setCheckClick(boolean checkClick);
+
+	@Import("mouseX2")
+	void setMouseCanvasHoverPositionX(int x);
+
+	@Import("mouseY2")
+	void setMouseCanvasHoverPositionY(int y);
 
 	@Import("mouseCurrentButton")
 	@Override
@@ -462,8 +452,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("unknownSoundValues1")
 	int[] getUnknownSoundValues1();
 
-	@Import("unknownSoundValues2")
-	int[] getUnknownSoundValues2();
+	@Import("queuedSoundEffectDelays")
+	int[] getQueuedSoundEffectDelays();
 
 	@Import("queuedSoundEffectCount")
 	int getQueuedSoundEffectCount();
@@ -478,6 +468,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("mouseIdleTicks")
 	@Override
 	int getMouseIdleTicks();
+
+	@Import("mouseLastPressedTimeMillis")
+	@Override
+	long getMouseLastPressedMillis();
 
 	@Import("keyboardIdleTicks")
 	@Override
@@ -661,6 +655,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setCompass(SpritePixels spritePixels);
 
 	@Import("widgetSpriteCache")
+	@Override
 	RSNodeCache getWidgetSpriteCache();
 
 	@Import("oculusOrbState")
@@ -687,4 +682,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuAction")
 	@Protect
 	void menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7);
+
+	@Import("occupiedTilesTick")
+	int[][] getOccupiedTilesTick();
 }
